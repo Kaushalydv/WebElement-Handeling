@@ -80,6 +80,7 @@ public class Cart {
 		WebElement ele5 = driver.findElement(By.id("postal-code"));
 		ele5.sendKeys("204215");
 		Thread.sleep(4000);
+		System.out.println("git testing ");
 
 		driver.findElement(By.id("continue")).click();
 		Thread.sleep(2000);
