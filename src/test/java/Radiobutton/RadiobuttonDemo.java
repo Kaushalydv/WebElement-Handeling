@@ -1,0 +1,53 @@
+package Radiobutton;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Screen.ScreenRecorderUtil;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class RadiobuttonDemo {
+
+	public static void main(String[] args) throws Exception {
+		
+		ScreenRecorderUtil.startRecord("main");
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://itera-qa.azurewebsites.net/home/automation");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+	
+		
+		
+		/*
+		driver.findElement(By.id("female")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.id("male")).click(); 
+		Thread.sleep(2000);
+		*/
+		
+		List<WebElement> radiobutton=driver.findElements(By.xpath("//input[@type='radio' and contains(@id , 'male') ]"));
+		System.out.println(radiobutton.size());		// to check no. of radio button.
+		
+		for(WebElement ele:radiobutton) {
+			String obj=ele.getAttribute("id");
+			System.out.println(obj);
+			ele.click();
+		}
+		
+		
+		
+		
+		Thread.sleep(2000);
+		
+		ScreenRecorderUtil.stopRecord();
+		driver.close();
+	}
+
+}
